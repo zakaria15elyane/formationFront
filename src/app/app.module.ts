@@ -10,13 +10,19 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AddFormationComponent } from './add-formation/add-formation.component';
 import { HomeComponent } from './home/home.component';
+import { Error404Component } from './error404/error404.component';
+import { VoirFormationComponent } from './voir-formation/voir-formation.component';
+import { EditFormationComponent } from './edit-formation/edit-formation.component';
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     FormationComponent,
     AddFormationComponent,
-    HomeComponent
+    HomeComponent,
+    Error404Component,
+    VoirFormationComponent,
+    EditFormationComponent
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,10 @@
 .style{
-  text-align: center;
-  padding-bottom: 12px;
-}
+
+    text-align: center;
+    color: red;
+    text-shadow: grey;
+    margin-top: 80px;
+    font-size: 3rem;
+  }
+
+

@@ -9,7 +9,8 @@
               <th>Prix</th>
               <th>Date_debut</th>
               <th>Date_fin</th>
-              <th></th>
+              <th  colspan="3">Action</th>
+
           </tr>
       </thead>
 
@@ -22,7 +23,9 @@
               <td>{{formation.dateDebut}}</td>
               <td>{{formation.dateFin}}</td>
               <td><button class="btn btn-danger" (click)="deleteFormation(formation.idFormation)">Delete</button></td>
-          </tr>
+              <td><button class="btn btn-warning ml-2" (click)="voirFormation(formation.idFormation)">Détails de formation</button></td>
+              <td><button class="btn btn-success ml-2" (click)="updateFormation(formation.idFormation)">Editer</button></td>
+            </tr>
       </tbody>
 
   </table>

@@ -34,7 +34,7 @@
               <div class="form-group row">
                   <label for="date_debut" class="col-sm-2 col-form-label">Date début :</label>
                   <div class="col-sm-10">
-                      <input required type="date" id="date_debut" (ngModelChange)="dateArrival = $event" name="date_debut" class="form-control" [ngModel]="formations.dateDebut" #date_debut="ngModel" [class.is-invalid]="date_debut.invalid && date_debut.touched" >
+                      <input required type="date" id="date_debut"  name="dateDebut" class="form-control" [ngModel]="formations.dateDebut" #date_debut="ngModel" [class.is-invalid]="date_debut.invalid && date_debut.touched" >
                       <small *ngIf="date_debut.invalid && date_debut.touched" class="text-danger pull-right">la date  est obligatoire</small>
                   </div>
               </div>
@@ -42,14 +42,14 @@
               <div class="form-group row">
                 <label for="date_fin" class="col-sm-2 col-form-label">Date fin :</label>
                 <div class="col-sm-10">
-                    <input required type="date" id="date_fin" (ngModelChange)="dateArrival = $event" name="date_fin" class="form-control" [ngModel]="formations.dateFin" #date_fin="ngModel" [class.is-invalid]="date_fin.invalid && date_fin.touched" >
+                    <input required type="date" id="date_fin"  name="dateFin" class="form-control" [ngModel]="formations.dateFin" #date_fin="ngModel" [class.is-invalid]="date_fin.invalid && date_fin.touched" >
                     <small *ngIf="date_fin.invalid && date_fin.touched" class="text-danger pull-right">la date est obligatoire</small>
                 </div>
             </div>
 
               <div class="form-group row">
                   <label for="description" class="col-sm-2 col-form-label"> </label>
-                  <div class="col-sm-10">
+                <div class="col-sm-10">
                       <button type="submit" [disabled]="f.invalid" class="bt btn-dark ">Enregistrer Formation</button>
                   </div>
               </div>

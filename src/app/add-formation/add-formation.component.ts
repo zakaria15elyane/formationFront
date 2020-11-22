@@ -20,13 +20,12 @@ public formations:Formation={
   dateFin:null
 };
   ngOnInit(): void {
-    this.dateArrival = new Date();
   }
   public ajouteFormation(data:any){
     this.formationService.saveFormation(this.formationService.host,data)
     .subscribe(response=>{
-      this.router.navigateByUrl("formations")
-      console.log(data);
+     this.router.navigateByUrl("formations")
+     console.log(data);
     }, err => {
       console.log(err);
     });

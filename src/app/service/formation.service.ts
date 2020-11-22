@@ -18,5 +18,11 @@ public host:string="http://localhost:8080/v0";
   saveFormation(host:any,data:any){
     return this.http.post(host+"/formations",data);
   }
+  getOneFormation(id:number){
+    return this.http.get<Formation>(this.host+"/formations/"+id);
+  }
+  updateFormation(idFormation,data: any){
+    return this.http.put(this.host+"/formations/"+idFormation,data);
+  }
 
 }

@@ -37,6 +37,12 @@ public formations:any=[];
   public saveFormation(){
     this.router.navigate(['/ajoute-formations']);
   }
+   voirFormation(idFormation:any){
+    this.router.navigate(['/voir-formations',idFormation]);
+  }
+  public updateFormation(idFormation:any){
+    this.router.navigate(['/edit-formations',idFormation]);
+  }
   }
 
 
