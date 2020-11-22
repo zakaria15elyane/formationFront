@@ -9,12 +9,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AddFormationComponent } from './add-formation/add-formation.component';
+import { HomeComponent } from './home/home.component';
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     FormationComponent,
-    AddFormationComponent
+    AddFormationComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
