@@ -1,0 +1,59 @@
+<div class="container mt-4">
+  <div class="form-produit shadow-lg">
+
+      <div class="titre shadow-lg mt-4" class="style">
+          Ajouter un nouvelle produit
+      </div>
+      <div class="container">
+          <form #f="ngForm" (ngSubmit)="ajouteFormation(f.value)" class="pb-2 " autocomplete="on">
+
+              <div class="form-group row">
+                  <label for="titreFormation" class="col-sm-2 col-form-label">Titre Formation :</label>
+                  <div class="col-sm-10">
+                      <input required id="titreFormation" autofocus name="titreFormation" minlength="3" [ngModel]="formations.titreFormation" placeholder="Designation de produit" type="text" class="form-control" #titreFormation="ngModel" [class.is-invalid]="titreFormation.invalid && titreFormation.touched">
+                      <small *ngIf="titreFormation.invalid && titreFormation.touched" class="text-danger pull-right">le champ designation est obligatoire</small>
+                  </div>
+              </div>
+
+              <div class="form-group row">
+                  <label for="description" class="col-sm-2 col-form-label">Description :</label>
+                  <div class="col-sm-10">
+                      <input required id="description" type="text" name="description" class="form-control" [ngModel]="formations.description" #description="ngModel" [class.is-invalid]="description.invalid && description.touched" placeholder="description de formation">
+                      <small *ngIf="description.invalid && description.touched" class="text-danger pull-right">le champ prix est obligatoire</small>
+                  </div>
+                </div>
+
+                  <div class="form-group row">
+                    <label for="prix" class="col-sm-2 col-form-label">Prix :</label>
+                    <div class="col-sm-10">
+                        <input required id="prix" type="text" name="prix" class="form-control" [ngModel]="formations.prix" #prix="ngModel" [class.is-invalid]="prix.invalid && prix.touched" placeholder="prix de produit">
+                        <small *ngIf="prix.invalid && prix.touched" class="text-danger pull-right">le champ prix est obligatoire</small>
+                    </div>
+              </div>
+
+              <div class="form-group row">
+                  <label for="date_debut" class="col-sm-2 col-form-label">Date début :</label>
+                  <div class="col-sm-10">
+                      <input required type="date" id="date_debut" (ngModelChange)="dateArrival = $event" name="date_debut" class="form-control" [ngModel]="formations.dateDebut" #date_debut="ngModel" [class.is-invalid]="date_debut.invalid && date_debut.touched" >
+                      <small *ngIf="date_debut.invalid && date_debut.touched" class="text-danger pull-right">la date  est obligatoire</small>
+                  </div>
+              </div>
+
+              <div class="form-group row">
+                <label for="date_fin" class="col-sm-2 col-form-label">Date fin :</label>
+                <div class="col-sm-10">
+                    <input required type="date" id="date_fin" (ngModelChange)="dateArrival = $event" name="date_fin" class="form-control" [ngModel]="formations.dateFin" #date_fin="ngModel" [class.is-invalid]="date_fin.invalid && date_fin.touched" >
+                    <small *ngIf="date_fin.invalid && date_fin.touched" class="text-danger pull-right">la date est obligatoire</small>
+                </div>
+            </div>
+
+              <div class="form-group row">
+                  <label for="description" class="col-sm-2 col-form-label"> </label>
+                  <div class="col-sm-10">
+                      <button type="submit" [disabled]="f.invalid" class="bt btn-dark ">Enregistrer Formation</button>
+                  </div>
+              </div>
+          </form>
+      </div>
+  </div>
+</div>

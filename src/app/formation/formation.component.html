@@ -1,0 +1,31 @@
+<div class="container">
+
+  <table class="text-center table shadow-lg mt-4">
+      <thead class="thead-dark">
+          <tr>
+              <th>Id_Formation</th>
+              <th>Titre</th>
+              <th>Description</th>
+              <th>Prix</th>
+              <th>Date_debut</th>
+              <th>Date_fin</th>
+              <th></th>
+          </tr>
+      </thead>
+
+      <tbody>
+          <tr *ngFor="let formation of formations ">
+              <td>{{formation.idFormation}}</td>
+              <td>{{formation.titreFormation}}</td>
+              <td>{{formation.description}}</td>
+              <td>{{formation.prix}}</td>
+              <td>{{formation.dateDebut}}</td>
+              <td>{{formation.dateFin}}</td>
+              <td><button class="btn btn-danger" (click)="deleteFormation(formation.idFormation)">Delete</button></td>
+          </tr>
+      </tbody>
+
+  </table>
+  <button class="btn btn-danger" style="width: 300px;" (click)="saveFormation()">Ajouter Formation</button>
+
+</div>
