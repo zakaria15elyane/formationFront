@@ -3,13 +3,15 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Formation } from '../formation';
 import { FormationService } from '../service/formation.service';
 
+
 @Component({
   selector: 'app-add-formation',
   templateUrl: './add-formation.component.html',
-  styleUrls: ['./add-formation.component.css']
+  styleUrls: ['./add-formation.component.css'],
 })
 export class AddFormationComponent implements OnInit {
-  dateArrival:Date;
+
+
   constructor(private formationService:FormationService,private activatedRoute:ActivatedRoute,private router:Router) { }
 public formations:Formation={
   idFormation:null,
@@ -26,8 +28,8 @@ public formations:Formation={
     .subscribe(response=>{
      this.router.navigateByUrl("formations")
      console.log(data);
-    }, err => {
-      console.log(err);
+    },err => {
+      console.log("ERROR");
     });
 
   }

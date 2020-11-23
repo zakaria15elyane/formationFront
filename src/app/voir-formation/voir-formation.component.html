@@ -1,9 +1,20 @@
-<div class="container my-4">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <div class="container my-4">
 
-  Id de Formation:{{formations.idFormation}}<br> Titre de Formation: {{formations.titreFormation}}<br>
+
+
+  <div class="container">
+
+    <div class="panel panel-primary">
+      <div class="panel-heading">Formation {{formations.titreFormation}}</div>
+      <div class="panel-body">
+         Titre de Formation: {{formations.titreFormation}}<br>
   Description de Formation: {{formations.description}}<br> Prix de Formation:{{formations.prix}} DH
-  <br> Date de début de Formation:{{formations.dateDebut}} DH<br>
-  Date de fin de Formation:  {{formations.dateFin}} DH<br>
+  <br> Date de début de Formation:{{formations.dateDebut}}<br>
+  Date de fin de Formation:  {{formations.dateFin}}<br>
+      </div>
+    </div>
+  </div>
 
 
 </div>

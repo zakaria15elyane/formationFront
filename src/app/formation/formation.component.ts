@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
+import { Formation } from '../formation';
 import { FormationService } from '../service/formation.service';
 
 @Component({
@@ -10,15 +13,16 @@ import { FormationService } from '../service/formation.service';
 export class FormationComponent implements OnInit {
 
   constructor(private formationService:FormationService,private router:Router) { }
-public formations:any=[];
+  displayedColumns: string[] = ['id', 'titre', 'description', 'prix', 'dateDebut', 'dateFin', 'actions'];
+  dataSourceFormation;
+  public formations:any=[];
   ngOnInit(): void {
     this.getAllFormation();
   }
   getAllFormation(){
     this.formationService.getFormation()
     .subscribe(data=>{
-      this.formations=data;
-      console.log(data);
+      this.dataSourceFormation = data;
     },error=>{
       console.log(error);
     });

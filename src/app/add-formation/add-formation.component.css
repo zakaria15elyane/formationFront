@@ -6,5 +6,16 @@
     margin-top: 80px;
     font-size: 3rem;
   }
+.st{
+  padding-top: 40px !important;
+}
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
 
+.example-full-width {
+  width: 100%;
+}
 

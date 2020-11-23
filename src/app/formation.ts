@@ -5,6 +5,6 @@ export class Formation {
   titreFormation:string;
   description:string;
   prix:string;
-  dateDebut:DatePipe;
+  dateDebut:Date;
   dateFin:Date;
 }
