@@ -6,7 +6,7 @@
   <mat-card>
 
       <div class="container">
-          <form #f="ngForm" (ngSubmit)="ajouteFormation(f.value)" class="pb-2  " autocomplete="on">
+          <form [formGroup]="formation" class="pb-2" (ngSubmit)="ajouteFormation(formation.value)" autocomplete="on">
 
                 <div class="form-group row st">
 
@@ -14,69 +14,92 @@
                   <div class="col-sm-10">
                     <mat-form-field class="example-full-width">
                       <mat-label>Titre Formation :</mat-label>
-                      <input matInput required id="titreFormation"  name="titreFormation"
-                      minlength="3" [ngModel]="formations.titreFormation" placeholder="Designation de produit"
-                       #titreFormation="ngModel" [class.is-invalid]="titreFormation.invalid && titreFormation.touched">
-                      <small *ngIf="titreFormation.invalid && titreFormation.touched" class="text-danger pull-right">le champ designation est obligatoire</small>
+                      <input matInput  id="titreFormation"  name="titreFormation"
+                   placeholder="titre de formation"
+                     formControlName="titreFormation">
+                      <div *ngIf="titreFormation.touched
+                       && titreFormation.invalid"
+                      class="text-danger pull-right">
+                      <div *ngIf="titreFormation.errors.required" >champ designation est obligatoire</div>
+
+                      <div *ngIf="titreFormation.errors.minlength" > Il faut écrire au moins 4 caractére</div>
+                     </div>
                     </mat-form-field>
                     </div>
               </div>
+              <div class="col-sm-10">
+                <mat-form-field class="example-full-width">
+                  <mat-label>Descreption Formation :</mat-label>
+                  <input matInput  id="titreFormation"  name="titreFormation"
+               placeholder="Designation de produit"
+                 formControlName="description">
+                  <div *ngIf="description.touched
+                   && description.invalid"
+                  class="text-danger pull-right">
+                  <div *ngIf="description.errors.required" >champ designation est obligatoire</div>
 
-              <div class="form-group row ">
-
-                  <div class="col-sm-10">
-                    <mat-form-field class="example-full-width">
-                      <mat-label>Descreption de Formation :</mat-label>
-                      <input  matInput  required id="description" name="description"  [ngModel]="formations.description" #description="ngModel" [class.is-invalid]="description.invalid && description.touched" placeholder="description de formation">
-                      <small *ngIf="description.invalid && description.touched" class="text-danger pull-right">le champ prix est obligatoire</small>
-                    </mat-form-field>
-                    </div>
+                  <div *ngIf="description.errors.minlength" > Il faut écrire au moins 4 caractére</div>
+                 </div>
+                </mat-form-field>
                 </div>
-
-                <div class="form-group row st">
-
-                  <div class="col-sm-10">
-                    <mat-form-field class="example-full-width">
-                      <mat-label>Prix Formation :</mat-label>
-                      <input  matInput  required id="prix"  name="prix"
-                       [ngModel]="formations.prix" #prix="ngModel" [class.is-invalid]="prix.invalid && prix.touched" placeholder="prix de produit">
-                      <small *ngIf="prix.invalid && prix.touched" class="text-danger pull-right">le champ prix est obligatoire</small>
-                    </mat-form-field></div>
-            </div>
-
-            <div class="form-group row">
 
                 <div class="col-sm-10">
                   <mat-form-field class="example-full-width">
-                    <mat-label>Date début :</mat-label>
-                  <input matInput required [matDatepicker]="picker" id="date_debut"  name="dateDebut"  [ngModel]="formations.dateDebut" #date_debut="ngModel" [class.is-invalid]="date_debut.invalid && date_debut.touched" >
-                  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                  <mat-datepicker #picker></mat-datepicker>
-                  <small *ngIf="date_debut.invalid && date_debut.touched" class="text-danger pull-right">la date  est obligatoire</small>
-                  </mat-form-field> </div>
-            </div>
+                    <mat-label>Prix Formation :</mat-label>
+                    <input matInput  id="prix"  name="prix"
+                 placeholder="prix de formation"
+                   formControlName="prix">
+                    <div *ngIf="prix.touched
+                     && prix.invalid"
+                    class="text-danger pull-right">
+                    <div *ngIf="prix.errors.required" >champ designation est obligatoire</div>
 
-                <div class="form-group row st">
+                    <div *ngIf="prix.errors.minlength" > Il faut écrire au moins 4 caractére</div>
+                   </div>
+                  </mat-form-field>
+                  </div>
 
                   <div class="col-sm-10">
                     <mat-form-field class="example-full-width">
-                      <mat-label>Date Fin :</mat-label>
-                      <input matInput  required [matDatepicker]="picker1" id="date_fin"  name="dateFin"  [ngModel]="formations.dateFin" #date_fin="ngModel" [class.is-invalid]="date_fin.invalid && date_fin.touched" >
-                      <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
-                      <mat-datepicker #picker1></mat-datepicker>
-                      <small *ngIf="date_fin.invalid && date_fin.touched" class="text-danger pull-right">la date est obligatoire</small>
+                      <mat-label>Date Début Formation :</mat-label>
+                      <input matInput  [matDatepicker]="picker" id="date_debut"    name="dateDebut"
+
+                     formControlName="dateDebut">
+                     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                      <mat-datepicker #picker></mat-datepicker>
+                      <div *ngIf="dateDebut.touched
+                       && dateDebut.invalid"
+                      class="text-danger pull-right">
+                      <div *ngIf="dateDebut.errors.required" >la date est obligatoire</div>
+                     </div>
                     </mat-form-field>
-
-
                     </div>
 
-              </div>
+                    <div class="col-sm-10">
+                      <mat-form-field class="example-full-width">
+                        <mat-label>Date Fin Formation :</mat-label>
+                        <input matInput  [matDatepicker]="picker1" id="date_fin"    name="dateFin"
+
+                       formControlName="dateFin">
+                       <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                        <mat-datepicker #picker1></mat-datepicker>
+                        <div *ngIf="dateFin.touched
+                         && dateFin.invalid"
+                        class="text-danger pull-right">
+                        <div *ngIf="dateDebut.errors.required" >la date est obligatoire</div>
+
+
+                       </div>
+                      </mat-form-field>
+                      </div>
+
+
 
 
                 <div class="form-group row">
                     <label for="description" class="col-sm-2 col-form-label"> </label>
                   <div class="col-sm-10">
-                        <button type="submit" [disabled]="f.invalid" class="bt btn-dark ">Enregistrer Formation</button>
+                        <button type="submit" [disabled]="formation.invalid" class="bt btn-dark ">Enregistrer Formation</button>
                     </div>
                 </div>
 

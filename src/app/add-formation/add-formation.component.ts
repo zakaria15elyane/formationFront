@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Formation } from '../formation';
 import { FormationService } from '../service/formation.service';
@@ -23,6 +24,48 @@ public formations:Formation={
 };
   ngOnInit(): void {
   }
+  formation=new FormGroup({
+    titreFormation:new FormControl('',
+    [
+      Validators.required,
+      Validators.minLength(4)
+    ]),
+    description:new FormControl('',
+    [
+      Validators.required,
+      Validators.minLength(4)
+    ]),
+    prix:new FormControl('',
+    [
+      Validators.required,
+      Validators.minLength(4)
+    ]),
+    dateDebut:new FormControl('',
+    [
+      Validators.required,
+
+    ]),
+    dateFin:new FormControl('',
+    [
+      Validators.required,
+
+    ]),
+  });
+  get titreFormation(){
+    return this.formation.get('titreFormation');
+  }
+  get description(){
+    return this.formation.get('description');
+  }
+  get prix(){
+    return this.formation.get('prix');
+  }
+  get dateDebut(){
+    return this.formation.get('dateDebut');
+  }
+  get dateFin(){
+    return this.formation.get('dateFin');
+  }
   public ajouteFormation(data:any){
     this.formationService.saveFormation(this.formationService.host,data)
     .subscribe(response=>{
@@ -31,6 +74,7 @@ public formations:Formation={
     },err => {
       console.log("ERROR");
     });
+
 
   }
 }
