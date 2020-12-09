@@ -7,7 +7,6 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { FormationComponent } from './formation/formation.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { Router } from '@angular/router';
 import { AddFormationComponent } from './add-formation/add-formation.component';
 import { HomeComponent } from './home/home.component';
 import { Error404Component } from './error404/error404.component';
@@ -24,6 +23,10 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatNativeDateModule } from '@angular/material/core';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatInputModule} from '@angular/material/input';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { MatSortModule } from '@angular/material/sort';
+import {MatDialogModule} from '@angular/material/dialog';
+import { DialogDataExampleDialogComponent } from './dialog-data-example-dialog/dialog-data-example-dialog.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,7 +36,8 @@ import {MatInputModule} from '@angular/material/input';
     HomeComponent,
     Error404Component,
     VoirFormationComponent,
-    EditFormationComponent
+    EditFormationComponent,
+    DialogDataExampleDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -51,7 +55,10 @@ import {MatInputModule} from '@angular/material/input';
     MatDatepickerModule,
     MatNativeDateModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatSortModule,
+    MatSnackBarModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

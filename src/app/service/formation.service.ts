@@ -10,8 +10,9 @@ public host:string="http://localhost:8080/v0";
   constructor(private http:HttpClient) { }
 
   getFormation(){
-    return this.http.get<Formation>(this.host+"/formations");
+    return this.http.get<Formation>(this.host+"/formations/titre");
   }
+
   deleteFormation(idFormation:number){
     return this.http.delete(`${this.host}/formations/${idFormation}`);
   }
@@ -21,8 +22,13 @@ public host:string="http://localhost:8080/v0";
   getOneFormation(id:number){
     return this.http.get<Formation>(this.host+"/formations/"+id);
   }
+  getSearchFormation(titreFormation:any){
+    return this.http.get<Formation>(this.host+"/formations/titre/"+titreFormation);
+  }
   updateFormation(idFormation,data: any){
     return this.http.put(this.host+"/formations/"+idFormation,data);
   }
 
-}
+  }
+
+

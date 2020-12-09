@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Formation } from '../formation';
 import { FormationService } from '../service/formation.service';
@@ -13,7 +14,8 @@ import { FormationService } from '../service/formation.service';
 export class AddFormationComponent implements OnInit {
 
 
-  constructor(private formationService:FormationService,private activatedRoute:ActivatedRoute,private router:Router) { }
+  constructor(private formationService:FormationService,private activatedRoute:ActivatedRoute,private router:Router,
+    private _snackBar: MatSnackBar) { }
 public formations:Formation={
   idFormation:null,
   titreFormation:null,
@@ -24,6 +26,14 @@ public formations:Formation={
 };
   ngOnInit(): void {
   }
+  public openSnackBar(message:string,action:string){
+    this._snackBar.open(message,action,{
+      duration: 10000,
+      horizontalPosition: 'center',
+      verticalPosition: 'bottom',
+      panelClass: ["custom-style"]
+
+    })};
   formation=new FormGroup({
     titreFormation:new FormControl('',
     [
@@ -51,6 +61,9 @@ public formations:Formation={
 
     ]),
   });
+  resetForm(){
+       this.formation.reset();
+  }
   get titreFormation(){
     return this.formation.get('titreFormation');
   }
@@ -67,10 +80,18 @@ public formations:Formation={
     return this.formation.get('dateFin');
   }
   public ajouteFormation(data:any){
+
     this.formationService.saveFormation(this.formationService.host,data)
+
     .subscribe(response=>{
-     this.router.navigateByUrl("formations")
-     console.log(data);
+      console.log(response);
+      this.openSnackBar("formations modifié avec succées","Fermé");
+      if(response==null){
+        console.log("error");
+
+
+
+      }else  (this.router.navigateByUrl("formations"));
     },err => {
       console.log("ERROR");
     });
