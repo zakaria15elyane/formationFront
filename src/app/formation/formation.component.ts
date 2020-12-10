@@ -8,6 +8,7 @@ import { FormationService } from '../service/formation.service';
 import { Formation } from '../formation';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { DialogDataExampleDialogComponent } from '../dialog-data-example-dialog/dialog-data-example-dialog.component';
+import { VoirFormationComponent } from '../voir-formation/voir-formation.component';
 
 
 @Component({
@@ -23,9 +24,6 @@ export class FormationComponent implements OnInit  {
   @ViewChild(MatSort) sort: MatSort;
   constructor(private formationService:FormationService,private router:Router,private _snackBar: MatSnackBar,
     public dialog: MatDialog ) { }
-
-
-
 
   dataSourceFormation= new MatTableDataSource<Formation>();
   displayedColumns: string[] = ['id', 'titre', 'description', 'prix', 'dateDebut', 'dateFin', 'actions'];
@@ -109,15 +107,17 @@ public openSnackBar(message:string,action:string){
       });
 
   }
-  /*openDialog() {
-    this.dialog.open(DialogDataExampleDialogComponent);
-  }*/
+  openDialog() {
+    this.dialog.open(VoirFormationComponent);
+  }
   public saveFormation(){
     this.router.navigate(['/ajoute-formations']);
 
   }
    voirFormation(idFormation:any){
+
     this.router.navigate(['/voir-formations',idFormation]);
+    //this.openDialog();
   }
 
   public updateFormation(idFormation:any){

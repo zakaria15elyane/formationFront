@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Formation } from '../formation';
 import { FormationService } from '../service/formation.service';
@@ -10,7 +11,8 @@ import { FormationService } from '../service/formation.service';
 })
 export class VoirFormationComponent implements OnInit {
 
-  constructor(private formationService:FormationService,private activatedRoute:ActivatedRoute,private router:Router) { }
+  constructor(private formationService:FormationService,private activatedRoute:ActivatedRoute,
+    private router:Router) { }
   public formations:Formation={
     idFormation:null,
     titreFormation:null,
@@ -25,6 +27,7 @@ export class VoirFormationComponent implements OnInit {
     let idFormation=parseInt(this.activatedRoute.snapshot.paramMap.get('idFormation'));
     this.idFormation=idFormation;
     this.formationService.getOneFormation(this.idFormation).subscribe(data=>{
+
       this.formations=data;
     })
   }
