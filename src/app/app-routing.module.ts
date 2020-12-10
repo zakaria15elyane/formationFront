@@ -3,6 +3,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { AddFormationComponent } from './add-formation/add-formation.component';
 import { EditFormationComponent } from './edit-formation/edit-formation.component';
 import { Error404Component } from './error404/error404.component';
+import { ExportFormationComponent } from './export-formation/export-formation.component';
+
 import { FormationComponent } from './formation/formation.component';
 import { HomeComponent } from './home/home.component';
 
@@ -16,7 +18,7 @@ const routes: Routes = [
   {path:"edit-formations/:idFormation",component:EditFormationComponent},
   //{path:"search-formations/:titreFormation",component:SearchFormationComponent},
   {path:"voir-formations/:idFormation",component:VoirFormationComponent},
-
+  {path:"formations/export",component:ExportFormationComponent},
   {path: "**", component: Error404Component}
 ];
 

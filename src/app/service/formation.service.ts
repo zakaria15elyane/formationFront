@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Formation } from '../formation';
 
 @Injectable({
@@ -27,6 +28,9 @@ public host:string="http://localhost:8080/v0";
   }
   updateFormation(idFormation,data: any){
     return this.http.put(this.host+"/formations/"+idFormation,data);
+  }
+  exportPdfFormations():Observable<Blob>{
+    return this.http.get(`${this.host}/exportpdf`,{responseType:'blob'});
   }
 
   }

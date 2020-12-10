@@ -6,7 +6,7 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 import {  Router } from '@angular/router';
 import { FormationService } from '../service/formation.service';
 import { Formation } from '../formation';
-import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { DialogDataExampleDialogComponent } from '../dialog-data-example-dialog/dialog-data-example-dialog.component';
 import { VoirFormationComponent } from '../voir-formation/voir-formation.component';
 
@@ -124,6 +124,23 @@ public openSnackBar(message:string,action:string){
     this.router.navigate(['/edit-formations',idFormation]);
   }
 
-
+  exportFormationPdf(){
+    this.formationService.exportPdfFormations().subscribe(x=>{
+      const blob=new Blob([x],{type:'application/pdf'});
+      if(window.navigator && window.navigator.msSaveOrOpenBlob){
+        window.navigator.msSaveOrOpenBlob(blob);
+        return;
+      }
+      const data=window.URL.createObjectURL(blob);
+      const link=document.createElement('a');
+      link.href=data;
+      link.download='formations.pdf';
+      link.dispatchEvent(new MouseEvent('click',{bubbles:true,cancelable:true,view:window}));
+      setTimeout(function() {
+        window.URL.revokeObjectURL(data);
+        link.remove();
+      }, 100);
+    });
+  }
 }
 
